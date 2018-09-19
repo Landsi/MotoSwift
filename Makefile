@@ -44,6 +44,7 @@ test: .prepare_test_data
 	cp "$(BUILD_PATH)" "$(BUNDLE_BIN_PATH)"
 	install_name_tool -delete_rpath "$(DEFAULT_RPATH)" "$(BUNDLE_BIN_PATH)/$(EXECUTABLE_NAME)" | true
 	install_name_tool -add_rpath "$(RPATH)" "$(BUNDLE_BIN_PATH)/$(EXECUTABLE_NAME)"
+	install_name_tool -add_rpath "@executable_path/../../sourcery/Sourcery.app/Contents/Frameworks" "$(BUNDLE_BIN_PATH)/$(EXECUTABLE_NAME)" 
 
 .bundle_templates:
 	mkdir -p "$(BUNDLE_TEMPLATES_PATH)"
